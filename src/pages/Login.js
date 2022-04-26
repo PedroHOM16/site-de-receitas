@@ -21,19 +21,13 @@ function Login() {
     setCocktailsToken(1);
   };
 
-  const saveDatas = {
-    mealsToken,
-    cocktailsToken,
-    user: { email },
-  };
-
-  const disableButton = () => passwordInput.length > six
-  && paramEmail.test(email);
+  const disableButton = () => passwordInput.length > six && paramEmail.test(email);
 
   useEffect(() => {
-    localStorage.setItem('profileData', JSON.stringify(saveDatas));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [() => submitBtn]);
+    localStorage.setItem('mealsToken', mealsToken);
+    localStorage.setItem('cocktailsToken', cocktailsToken);
+    localStorage.setItem('user', email);
+  }, [mealsToken, cocktailsToken, email]);
 
   const handleEmail = ({ target: { value } }) => {
     setEmail(value);
