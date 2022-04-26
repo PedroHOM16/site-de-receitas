@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
-  const [emailInput, setEmailInput] = useState('');
+  const [email, setEmail] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const [mealsToken, setMealsToken] = useState(null);
+  const [cocktailsToken, setCocktailsToken] = useState(null);
 
   const contextValue = {
-    emailInput,
-    setEmailInput,
+    email,
+    setEmail,
     passwordInput,
     setPasswordInput,
+    mealsToken,
+    setMealsToken,
+    cocktailsToken,
+    setCocktailsToken,
   };
 
   return (
