@@ -19,32 +19,35 @@ function Login() {
   const submitBtn = () => {
     setMealsToken(1);
     setCocktailsToken(1);
+    localStorage.setItem('user', JSON.stringfy(email));
   };
 
-  const disableButton = () => passwordInput.length > six && paramEmail.test(email);
+  const disableButton = () => passwordInput.length > six && paramEmail.test(email.email);
 
   useEffect(() => {
     localStorage.setItem('mealsToken', mealsToken);
     localStorage.setItem('cocktailsToken', cocktailsToken);
-    localStorage.setItem('user', email);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mealsToken, cocktailsToken, email]);
 
   const handleEmail = ({ target: { value } }) => {
-    setEmail(value);
+    console.log('teste1:', value);
+    setEmail({ email: value });
   };
 
   const handlePassword = ({ target: { value } }) => {
     setPasswordInput(value);
   };
 
-  console.log('tokens', mealsToken, cocktailsToken);
+  console.log(email);
+
   return (
     <div>
       <h1>Login</h1>
       <form>
         <input
           type="text"
-          value={ email }
+          // value={ email }
           placeholder="Digite seu e-mail"
           data-testid="email-input"
           onChange={ handleEmail }
