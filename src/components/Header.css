@@ -1,0 +1,13 @@
+.profile-top-btn {
+  background-image: url('../images/profileIcon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 15px;
+}
+
+.search-top-btn {
+  background-image: url('../images/searchIcon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 15px;
+}

@@ -19,7 +19,7 @@ function SearchBar() {
 
   const foodFetch = async () => {
     let response = [];
-    if (checkedRadio === 'ingredients') {
+    if (checkedRadio === 'ingredient') {
       response = await getMealByIngridients(inputSearch);
     } else if (checkedRadio === 'name') {
       response = await getMealByName(inputSearch);
@@ -27,8 +27,7 @@ function SearchBar() {
       if (inputSearch.length === 1) {
         response = await getMealByFirstLetter(inputSearch);
       } else {
-        // eslint-disable-next-line no-alert
-        alert('Your search must have only 1 (one) character');
+        global.alert('Your search must have only 1 (one) character');
       }
     }
     return response;
@@ -44,8 +43,7 @@ function SearchBar() {
       if (inputSearch.length === 1) {
         response = await getDrinksByFirstLetter(inputSearch);
       } else {
-        // eslint-disable-next-line no-alert
-        alert('Your search must have only 1 (one) character');
+        global.alert('Your search must have only 1 (one) character');
       }
     }
     return response;
@@ -59,8 +57,7 @@ function SearchBar() {
     } else if (page === '/drinks') {
       response = await drinkFetch();
     }
-    setFilter(response);
-    console.log(response);
+    setFilter(response.meals);
   };
 
   const checkedSetter = ({ target }) => target.checked && setCheckedRadio(target.value);
