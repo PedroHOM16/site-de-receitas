@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CardRecipes from '../components/CardRecipes';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import { getMealByIngridients } from '../services/ApiMeals';
@@ -10,7 +11,12 @@ function Foods() {
   const twelve = 12;
 
   const initialRender = async () => {
-    const response = await getMealByIngridients('butter');
+    let response = [];
+    try {
+      response = await getMealByIngridients('butter');
+    } catch (error) {
+      console.log('error');
+    }
     setDefaultRender(response.meals);
   };
 
@@ -34,6 +40,7 @@ function Foods() {
               <CardRecipes name={ element.strMeal } image={ element.strMealThumb } />
             </div>
           )) }
+      <Footer />
     </div>
   );
 }
