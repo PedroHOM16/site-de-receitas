@@ -40,7 +40,6 @@ function Login(props) {
     setPasswordInput(value);
   };
 
-  console.log('tokens', mealsToken, cocktailsToken);
   return (
     <div>
       <h1>Login</h1>
