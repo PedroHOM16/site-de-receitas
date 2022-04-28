@@ -4,7 +4,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipesProvider from './context/RecipesProvider';
 import Login from './pages/Login';
-import Foods from './pages/foods';
 import Explore from './pages/explore';
 import Drinks from './pages/drinks';
 import Inprogress from './pages/Inprogress';
@@ -12,8 +11,8 @@ import Ingredients from './pages/Ingredients';
 import Profile from './pages/Profile';
 import Done from './pages/Done';
 import Favorites from './pages/Favorites';
+import Foods from './pages/Foods';
 
-const idReceita = 'teste';
 
 function App() {
   return (
@@ -25,8 +24,6 @@ function App() {
         <Route path="/explore/foods" component={ Explore } />
         <Route path="/explore/drinks" component={ Explore } />
         <Route path="/drinks" component={ Drinks } />
-
-        <Route exact path={ `/${idReceita}` } />
         <Route path="/in-progress" component={ Inprogress } />
         <Route path="/explore/foods/ingredients" component={ Ingredients } />
         <Route path="/explore/drinks/ingredients" component={ Ingredients } />
