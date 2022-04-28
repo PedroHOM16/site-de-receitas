@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
 import SearchBar from './SearchBar';
+import './Header.css';
+import profileIcon from '../images/profileIcon.svg';
+import searchIcon from '../images/searchIcon.svg';
 
 function Header(props) {
   const {
-    searchIcon,
+    searchI,
     setSearchIcon,
   } = useContext(RecipesContext);
 
   const searchBar = () => {
-    if (searchIcon) {
+    if (searchI) {
       setSearchIcon(false);
     } else {
       setSearchIcon(true);
@@ -25,23 +28,23 @@ function Header(props) {
   return (
     <div>
       <header>
-        <button
+        <input
           type="button"
           data-testid="profile-top-btn"
+          className="profile-top-btn"
+          src={ profileIcon }
           onClick={ profilePage }
-        >
-          <img src="src/images/profileIcon.svg" alt="Profile Icon" />
-        </button>
+        />
         <h2 data-testid="page-title">titulo</h2>
-        <button
+        <input
           type="button"
           data-testid="search-top-btn"
+          className="search-top-btn"
+          src={ searchIcon }
           onClick={ searchBar }
-        >
-          <img src="src/images/searchIcon.svg" alt="Search Icon" />
-        </button>
+        />
       </header>
-      {searchIcon && <SearchBar />}
+      {searchI && <SearchBar />}
     </div>
   );
 }
