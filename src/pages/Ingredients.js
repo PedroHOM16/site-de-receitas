@@ -4,7 +4,7 @@ import Footer from '../Components/footer';
 function Ingredients() {
   return (
     <div>
-      <h1> TEXTO ALEATORIO QUALQUER SOBRE EXPLORE </h1>
+      <h1> TEXTO ALEATORIO QUALQUER </h1>
       <Footer />
     </div>
   );

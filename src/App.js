@@ -13,7 +13,6 @@ import Done from './pages/Done';
 import Favorites from './pages/Favorites';
 import Foods from './pages/Foods';
 
-
 function App() {
   return (
     <RecipesProvider>

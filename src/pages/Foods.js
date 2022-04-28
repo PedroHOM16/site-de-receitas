@@ -3,6 +3,7 @@ import CardRecipes from '../components/CardRecipes';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import { getMealByIngridients } from '../services/ApiMeals';
+import Footer from '../Components/footer';
 
 function Foods() {
   const { filter } = useContext(RecipesContext);
@@ -34,6 +35,7 @@ function Foods() {
               <CardRecipes name={ element.strMeal } image={ element.strMealThumb } />
             </div>
           )) }
+      <Footer />
     </div>
   );
 }
