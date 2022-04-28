@@ -7,6 +7,8 @@ function RecipesProvider({ children }) {
   const [passwordInput, setPasswordInput] = useState('');
   const [mealsToken, setMealsToken] = useState(null);
   const [cocktailsToken, setCocktailsToken] = useState(null);
+  const [searchIcon, setSearchIcon] = useState(false);
+  const [filter, setFilter] = useState('');
 
   const contextValue = {
     email,
@@ -17,6 +19,10 @@ function RecipesProvider({ children }) {
     setMealsToken,
     cocktailsToken,
     setCocktailsToken,
+    searchIcon,
+    setSearchIcon,
+    filter,
+    setFilter,
   };
 
   return (
