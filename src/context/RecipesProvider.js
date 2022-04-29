@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import defaultRender from '../services/defaultRender';
 import RecipesContext from './RecipesContext';
 
 function RecipesProvider({ children }) {
@@ -8,7 +9,7 @@ function RecipesProvider({ children }) {
   const [mealsToken, setMealsToken] = useState(null);
   const [cocktailsToken, setCocktailsToken] = useState(null);
   const [searchI, setSearchIcon] = useState(false);
-  const [filter, setFilter] = useState(null);
+  const [filter, setFilter] = useState(defaultRender);
 
   const contextValue = {
     email,

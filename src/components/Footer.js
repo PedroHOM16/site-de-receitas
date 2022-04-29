@@ -1,8 +1,8 @@
+// import PropTypes from 'prop-types';
 import React from 'react';
 import '../images/drinkIcon.svg';
 import '../images/exploreIcon.svg';
 import '../images/mealIcon.svg';
-// import PropTypes from 'prop-types';
 
 function Footer() {
   function submitTeste() {
@@ -17,8 +17,8 @@ function Footer() {
     window.location.href = '/explore';
   }
   function submitTeste3() {
-    //   const { history } = props;
-    //   history.push('/explore/foods');
+    // const { history } = props;
+    // history.push('/explore/foods');
     window.location.href = '/foods';
   }
   return (

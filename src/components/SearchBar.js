@@ -20,24 +20,12 @@ function SearchBar() {
   const foodFetch = async () => {
     let response = [];
     if (checkedRadio === 'ingredient') {
-      try {
-        response = await getMealByIngridients(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
+      response = await getMealByIngridients(inputSearch);
     } else if (checkedRadio === 'name') {
-      try {
-        response = await getMealByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
+      response = await getMealByName(inputSearch);
     } else if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
-        try {
-          response = await getMealByFirstLetter(inputSearch);
-        } catch (error) {
-          console.log('error');
-        }
+        response = await getMealByFirstLetter(inputSearch);
       } else {
         global.alert('Your search must have only 1 (one) character');
       }
@@ -48,24 +36,12 @@ function SearchBar() {
   const drinkFetch = async () => {
     let response = [];
     if (checkedRadio === 'ingredients') {
-      try {
-        response = await getDrinksIngridientByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
+      response = await getDrinksIngridientByName(inputSearch);
     } else if (checkedRadio === 'name') {
-      try {
-        response = await getDrinksByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
+      response = await getDrinksByName(inputSearch);
     } else if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
-        try {
-          response = await getDrinksByFirstLetter(inputSearch);
-        } catch (error) {
-          console.log('error');
-        }
+        response = await getDrinksByFirstLetter(inputSearch);
       } else {
         global.alert('Your search must have only 1 (one) character');
       }
@@ -77,17 +53,9 @@ function SearchBar() {
     let response = [];
     const page = window.location.pathname;
     if (page === '/foods') {
-      try {
-        response = await foodFetch();
-      } catch (error) {
-        console.log('error');
-      }
+      response = await foodFetch();
     } else if (page === '/drinks') {
-      try {
-        response = await drinkFetch();
-      } catch (error) {
-        console.log('error');
-      }
+      response = await drinkFetch();
     }
     setFilter(response.meals);
   };

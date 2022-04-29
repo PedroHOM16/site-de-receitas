@@ -19,10 +19,10 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route path="/foods" component={ Foods } />
-        <Route exact path="/explore" component={ Explore } />
+        <Route path="/drinks" component={ Drinks } />
+        <Route path="/explore" component={ Explore } />
         <Route path="/explore/foods" component={ Explore } />
         <Route path="/explore/drinks" component={ Explore } />
-        <Route path="/drinks" component={ Drinks } />
         <Route path="/in-progress" component={ Inprogress } />
         <Route path="/explore/foods/ingredients" component={ Ingredients } />
         <Route path="/explore/drinks/ingredients" component={ Ingredients } />

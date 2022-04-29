@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
 import SearchBar from './SearchBar';
@@ -6,7 +5,7 @@ import './Header.css';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-function Header(props) {
+function Header() {
   const {
     searchI,
     setSearchIcon,
@@ -21,8 +20,7 @@ function Header(props) {
   };
 
   const profilePage = () => {
-    const { history } = props;
-    history.push('/profile');
+    window.location.href = '/profile';
   };
 
   return (
@@ -35,7 +33,7 @@ function Header(props) {
           src={ profileIcon }
           onClick={ profilePage }
         />
-        <h2 data-testid="page-title">titulo</h2>
+        <h2 data-testid="page-title">Foods</h2>
         <input
           type="button"
           data-testid="search-top-btn"
@@ -48,11 +46,5 @@ function Header(props) {
     </div>
   );
 }
-
-Header.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }),
-}.isRequired;
 
 export default Header;
