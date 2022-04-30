@@ -6,7 +6,6 @@ import {
 } from '../services/ApiMeals';
 import {
   getDrinksByFirstLetter,
-  getDrinksIngridientByName,
   getDrinksByName,
 } from '../services/ApiDrinks';
 import RecipesContext from '../context/RecipesContext';
@@ -15,7 +14,7 @@ function SearchBar() {
   const [checkedRadio, setCheckedRadio] = useState('ingredient');
   const [inputSearch, setInputSearch] = useState('');
 
-  const { setFilter } = useContext(RecipesContext);
+  const { setFilter, setFilterDrinks } = useContext(RecipesContext);
 
   const foodFetch = async () => {
     let response = [];
@@ -35,9 +34,7 @@ function SearchBar() {
 
   const drinkFetch = async () => {
     let response = [];
-    if (checkedRadio === 'ingredients') {
-      response = await getDrinksIngridientByName(inputSearch);
-    } else if (checkedRadio === 'name') {
+    if (checkedRadio === 'name' || checkedRadio === 'ingredient') {
       response = await getDrinksByName(inputSearch);
     } else if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
@@ -54,10 +51,11 @@ function SearchBar() {
     const page = window.location.pathname;
     if (page === '/foods') {
       response = await foodFetch();
+      setFilter(response.meals);
     } else if (page === '/drinks') {
       response = await drinkFetch();
+      setFilterDrinks(response.drinks);
     }
-    setFilter(response.meals);
   };
 
   const checkedSetter = ({ target }) => target.checked && setCheckedRadio(target.value);
