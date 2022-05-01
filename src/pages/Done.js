@@ -1,13 +1,11 @@
 import React from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function Done() {
   return (
     <div>
-      <Header />
+      <Header title="Done Recipes" />
       <h1> TEXTO ALEATORIO QUALQUER </h1>
-      <Footer />
     </div>
   );
 }

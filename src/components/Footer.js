@@ -1,18 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import './Footer.css';
 
 function Footer() {
+  const history = useHistory();
   function submitTeste() {
-    window.location.href = '/drinks';
+    history.push('/drinks');
   }
   function submitTeste2() {
-    window.location.href = '/explore';
+    history.push('/explore');
   }
   function submitTeste3() {
-    window.location.href = '/foods';
+    history.push('/foods');
   }
   return (
     <div className="container-footer">

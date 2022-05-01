@@ -1,7 +1,7 @@
 // a primeira api não retorna as mesmas infos:
-export const getDrinksIngridientByName = async (name) => {
+export const getDrinksIngridientByName = async (ingredient) => {
   const response = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`,
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   );
   const data = await response.json();
   return data;

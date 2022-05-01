@@ -5,9 +5,11 @@ import {
   getMealByName,
 } from '../services/ApiMeals';
 import {
+  getDrinksIngridientByName,
   getDrinksByFirstLetter,
   getDrinksByName,
 } from '../services/ApiDrinks';
+
 import RecipesContext from '../context/RecipesContext';
 
 function SearchBar() {
@@ -20,12 +22,15 @@ function SearchBar() {
     let response = [];
     if (checkedRadio === 'ingredient') {
       response = await getMealByIngridients(inputSearch);
-    } else if (checkedRadio === 'name') {
+    }
+    if (checkedRadio === 'name') {
       response = await getMealByName(inputSearch);
-    } else if (checkedRadio === 'first-letter') {
+    }
+    if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
         response = await getMealByFirstLetter(inputSearch);
       } else {
+        response = null;
         global.alert('Your search must have only 1 (one) character');
       }
     }
@@ -34,12 +39,17 @@ function SearchBar() {
 
   const drinkFetch = async () => {
     let response = [];
-    if (checkedRadio === 'name' || checkedRadio === 'ingredient') {
+    if (checkedRadio === 'ingredient') {
+      response = await getDrinksIngridientByName(inputSearch);
+    }
+    if (checkedRadio === 'name') {
       response = await getDrinksByName(inputSearch);
-    } else if (checkedRadio === 'first-letter') {
+    }
+    if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
         response = await getDrinksByFirstLetter(inputSearch);
       } else {
+        response = null;
         global.alert('Your search must have only 1 (one) character');
       }
     }
@@ -51,10 +61,10 @@ function SearchBar() {
     const page = window.location.pathname;
     if (page === '/foods') {
       response = await foodFetch();
-      setFilter(response.meals);
+      setFilter(response && response.meals);
     } else if (page === '/drinks') {
       response = await drinkFetch();
-      setFilterDrinks(response.drinks);
+      setFilterDrinks(response && response.drinks);
     }
   };
 

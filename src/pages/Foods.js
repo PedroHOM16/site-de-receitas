@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import CardRecipes from '../components/CardRecipes';
 import RecipesContext from '../context/RecipesContext';
 
 function Foods() {
@@ -9,20 +11,20 @@ function Foods() {
 
   return (
     <div>
-      <Header />
+      <Header search title="Foods" />
       {
         filter === null
-          ? <span>Tente novamente ou faça uma dieta!</span>
+          ? global.alert('Sorry, we haven\'t found any recipes for these filters.')
           : filter.map((el, index) => index < twelve
-          && (
-            <div key={ index } data-testid={ `${index}-recipe-card` }>
-              <img
-                data-testid={ `${index}-card-img` }
-                src={ el.strMealThumb }
-                alt="imagem"
-              />
-              <h3 data-testid={ `${index}-card-name` }>{el.strMeal}</h3>
-            </div>
+          && (filter.length === 1 ? <Redirect to={ `/foods/${el.idMeal}` } />
+            : (
+              <div key={ index } data-testid={ `${index}-recipe-card` }>
+                <CardRecipes
+                  index={ index }
+                  image={ el.strMealThumb }
+                  name={ el.strMeal }
+                />
+              </div>)
           ))
       }
       <Footer />

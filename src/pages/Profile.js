@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 function Profile() {
   return (
     <div>
-      <Header />
+      <Header title="Profile" />
       <h1> TEXTO ALEATORIO QUALQUER</h1>
       <Footer />
     </div>

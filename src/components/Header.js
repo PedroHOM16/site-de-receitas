@@ -1,41 +1,18 @@
-import React, { useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import SearchBar from './SearchBar';
 import './Header.css';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-function Header() {
+function Header({ search, title }) {
+  const history = useHistory();
   const {
     searchI,
     setSearchIcon,
   } = useContext(RecipesContext);
-
-  const [title, setTitle] = useState('');
-  const [search, setSearch] = useState(true);
-
-  const locationTitle = () => {
-    const page = window.location.pathname;
-    if (page === '/foods') setTitle('Foods');
-    if (page === '/drinks') setTitle('Drinks');
-    if (page === '/explore') {
-      setTitle('Explore');
-      setSearch(false);
-    }
-    if (page === '/explore/foods') {
-      setTitle('Explore Foods');
-      setSearch(false);
-    }
-    if (page === '/explore/drinks') {
-      setTitle('Explore Drinks');
-      setSearch(false);
-    }
-  };
-
-  useEffect(() => {
-    locationTitle();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const searchBar = () => {
     if (searchI) {
@@ -46,7 +23,7 @@ function Header() {
   };
 
   const profilePage = () => {
-    window.location.href = '/profile';
+    history.push('/profile');
   };
 
   return (
@@ -72,5 +49,10 @@ function Header() {
     </div>
   );
 }
+
+Header.propTypes = {
+  search: PropTypes.bool,
+  title: PropTypes.string,
+}.isRequired;
 
 export default Header;
