@@ -5,40 +5,32 @@ import {
   getMealByName,
 } from '../services/ApiMeals';
 import {
-  getDrinksByFirstLetter,
   getDrinksIngridientByName,
+  getDrinksByFirstLetter,
   getDrinksByName,
 } from '../services/ApiDrinks';
+
 import RecipesContext from '../context/RecipesContext';
 
 function SearchBar() {
   const [checkedRadio, setCheckedRadio] = useState('ingredient');
   const [inputSearch, setInputSearch] = useState('');
 
-  const { setFilter } = useContext(RecipesContext);
+  const { setFilter, setFilterDrinks } = useContext(RecipesContext);
 
   const foodFetch = async () => {
     let response = [];
     if (checkedRadio === 'ingredient') {
-      try {
-        response = await getMealByIngridients(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
-    } else if (checkedRadio === 'name') {
-      try {
-        response = await getMealByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
-    } else if (checkedRadio === 'first-letter') {
+      response = await getMealByIngridients(inputSearch);
+    }
+    if (checkedRadio === 'name') {
+      response = await getMealByName(inputSearch);
+    }
+    if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
-        try {
-          response = await getMealByFirstLetter(inputSearch);
-        } catch (error) {
-          console.log('error');
-        }
+        response = await getMealByFirstLetter(inputSearch);
       } else {
+        response = null;
         global.alert('Your search must have only 1 (one) character');
       }
     }
@@ -47,26 +39,17 @@ function SearchBar() {
 
   const drinkFetch = async () => {
     let response = [];
-    if (checkedRadio === 'ingredients') {
-      try {
-        response = await getDrinksIngridientByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
-    } else if (checkedRadio === 'name') {
-      try {
-        response = await getDrinksByName(inputSearch);
-      } catch (error) {
-        console.log('error');
-      }
-    } else if (checkedRadio === 'first-letter') {
+    if (checkedRadio === 'ingredient') {
+      response = await getDrinksIngridientByName(inputSearch);
+    }
+    if (checkedRadio === 'name') {
+      response = await getDrinksByName(inputSearch);
+    }
+    if (checkedRadio === 'first-letter') {
       if (inputSearch.length === 1) {
-        try {
-          response = await getDrinksByFirstLetter(inputSearch);
-        } catch (error) {
-          console.log('error');
-        }
+        response = await getDrinksByFirstLetter(inputSearch);
       } else {
+        response = null;
         global.alert('Your search must have only 1 (one) character');
       }
     }
@@ -77,19 +60,12 @@ function SearchBar() {
     let response = [];
     const page = window.location.pathname;
     if (page === '/foods') {
-      try {
-        response = await foodFetch();
-      } catch (error) {
-        console.log('error');
-      }
+      response = await foodFetch();
+      setFilter(response && response.meals);
     } else if (page === '/drinks') {
-      try {
-        response = await drinkFetch();
-      } catch (error) {
-        console.log('error');
-      }
+      response = await drinkFetch();
+      setFilterDrinks(response && response.drinks);
     }
-    setFilter(response.meals);
   };
 
   const checkedSetter = ({ target }) => target.checked && setCheckedRadio(target.value);

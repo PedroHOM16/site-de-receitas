@@ -3,11 +3,14 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe } from 'jest-circus';
 import Footer from '../components/Footer';
+<<<<<<< HEAD
 import renderWithRouter from './renderWithRouter';
 // import App from '../App';
 import Foods from '../pages/Foods';
 
 const idBottom = 'drinks-bottom-btn';
+=======
+>>>>>>> 7381c3feeb9299c351795810c7a98a049f2bd02d
 
 describe('19 - o rodapé deve respeitar os atributos descritos no protótipo', () => {
   it('O menu inferior deve ter possuir o atributo data-testid=footer', () => {
