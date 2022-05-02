@@ -4,13 +4,36 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipesProvider from './context/RecipesProvider';
 import Login from './pages/Login';
+import Explore from './pages/Explore';
+import Drinks from './pages/Drinks';
+import Inprogress from './pages/Inprogress';
+import Ingredients from './pages/Ingredients';
+import Profile from './pages/Profile';
+import Done from './pages/Done';
+import Favorites from './pages/Favorites';
+import Foods from './pages/Foods';
 
 function App() {
   return (
     <RecipesProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
+<<<<<<< HEAD
         <Route path="/foods" component />
+=======
+        <Route path="/foods" component={ Foods } />
+        <Route exact path="/explore" component={ Explore } />
+        <Route path="/explore/foods" component={ Explore } />
+        <Route path="/explore/drinks" component={ Explore } />
+        <Route path="/drinks" component={ Drinks } />
+        <Route path="/in-progress" component={ Inprogress } />
+        <Route path="/explore/foods/ingredients" component={ Ingredients } />
+        <Route path="/explore/drinks/ingredients" component={ Ingredients } />
+        <Route path="/explore/foods/nationalities" component={ Ingredients } />
+        <Route path="/profile" component={ Profile } />
+        <Route path="/done-recipes" component={ Done } />
+        <Route path="/favorite-recipes" component={ Favorites } />
+>>>>>>> cde645bd80c241ca15295a18c1bd153b270a2ae9
       </Switch>
     </RecipesProvider>
   );

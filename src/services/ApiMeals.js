@@ -3,8 +3,10 @@ export const getMealByIngridients = async (ingredient) => {
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   );
   const data = await response.json();
+  // console.log(data);
   return data;
 };
+// getMealByIngridients('Oil');
 
 export const getMealByName = async (name) => {
   const response = await fetch(
