@@ -4,7 +4,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import { getMealByIngridients } from '../services/ApiMeals';
-import Footer from '../Components/footer';
 
 function Foods() {
   const { filter } = useContext(RecipesContext);
@@ -31,14 +30,18 @@ function Foods() {
       {filter
         ? filter.map((el, key) => key < twelve
           && (
-            <div key={ key }>
-              <CardRecipes name={ el.strMeal } image={ el.strMealThumb } />
+            <div data-testid={ `${key}-recipe-card` } key={ key }>
+              <CardRecipes key={ key } name={ el.strMeal } image={ el.strMealThumb } />
             </div>
           ))
         : defaultRender.map((element, key) => key < twelve
           && (
-            <div key={ key }>
-              <CardRecipes name={ element.strMeal } image={ element.strMealThumb } />
+            <div data-testid={ `${key}-recipe-card` } key={ key }>
+              <CardRecipes
+                key={ key }
+                name={ element.strMeal }
+                image={ element.strMealThumb }
+              />
             </div>
           )) }
       <Footer />

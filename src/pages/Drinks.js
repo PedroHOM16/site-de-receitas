@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 function Drinks() {
   return (
     <div>
-      <h1> TEXTO ALEATORIO QUALQUER SOBRE BEBIDA </h1>
+      <h1> DRINKS </h1>
       <Footer />
     </div>
   );

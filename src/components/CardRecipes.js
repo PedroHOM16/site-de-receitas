@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function CardRecipes({ name, image }) {
+function CardRecipes({ name, image, key }) {
   return (
     <div>
-      <img src={ image } alt="imagem" />
-      <h3>{name}</h3>
+      <img data-testid={ `${key}-card-img` } src={ image } alt="imagem" />
+      <h3 data-testid={ `${key}-card-name` }>{name}</h3>
     </div>
   );
 }
