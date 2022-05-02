@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe } from 'jest-circus';
-import Footer from '../Components/footer';
+import Footer from '../components/Footer';
 
 describe('19 - o rodapé deve respeitar os atributos descritos no protótipo', () => {
   it('O menu inferior deve ter possuir o atributo data-testid=footer', () => {
