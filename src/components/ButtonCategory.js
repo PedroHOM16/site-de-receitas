@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext } from 'react';
-import { getCategory, getListCategory, getMealByName } from '../services/ApiMeals';
+import {
+  getCategory,
+  getListCategory,
+  getMealByName,
+} from '../services/ApiMeals';
 import { getDrinksByName } from '../services/ApiDrinks';
 import RecipesContext from '../context/RecipesContext';
 
 function ButtonCategory({ pathname }) {
   const { setFilter, setFilterDrinks, setDetailsCond } = useContext(RecipesContext);
   const [category, setCategory] = useState([]);
-  const [isToggle, setIsToggle] = useState(false);
+  const [isToggle, setIsToggle] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState('');
   const five = 5;
 
@@ -47,14 +51,18 @@ function ButtonCategory({ pathname }) {
     if (category[index].strCategory !== selectedFilter) {
       setIsToggle(false);
     } else {
-      setIsToggle(false);
+      setIsToggle(true);
     }
-    console.log(selectedFilter);
-    console.log(isToggle);
     setSelectedFilter(category[index].strCategory);
-    getList(value);
     setDetailsCond(false);
+    console.log(category[index].strCategory);
   };
+
+  // const handleClickAll = () => {};
+
+  useEffect(() => {
+    getList(selectedFilter);
+  }, [selectedFilter, isToggle]);
 
   useEffect(() => {
     renderCategory();
@@ -63,22 +71,27 @@ function ButtonCategory({ pathname }) {
 
   return (
     <div>
-      {category.map((el, index) => index < five
-     && (
-       <div key={ index }>
-         <button
-           data-testid={ `${el.strCategory}-category-filter` }
-           type="button"
-           value={ el.strCategory }
-           onClick={
-             ({ target: { value } }) => handleClick(value, index)
-           }
-         >
-           { el.strCategory }
-
-         </button>
-       </div>
-     ))}
+      <button
+        type="button"
+        data-testid="All-category-filter"
+        onClick={ () => setIsToggle(true) }
+      >
+        All
+      </button>
+      {category.map(
+        (el, index) => index < five && (
+          <div key={ index }>
+            <button
+              data-testid={ `${el.strCategory}-category-filter` }
+              type="button"
+              value={ el.strCategory }
+              onClick={ ({ target: { value } }) => handleClick(value, index) }
+            >
+              {el.strCategory}
+            </button>
+          </div>
+        ),
+      )}
     </div>
   );
 }

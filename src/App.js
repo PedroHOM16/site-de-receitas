@@ -23,16 +23,10 @@ function App() {
     <RecipesProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Route path="/foods" component />
-=======
-=======
         <Route path="/foods/:id/in-progress" component={ Inprogress } />
         <Route path="/drinks/:id/in-progress" component={ Inprogress } />
         <Route path="/foods/:id" component={ FoodDetails } />
         <Route path="/drinks/:id" component={ DrinkDetails } />
->>>>>>> 7381c3feeb9299c351795810c7a98a049f2bd02d
         <Route path="/foods" component={ Foods } />
         <Route path="/drinks" component={ Drinks } />
         <Route path="/explore/foods/ingredients" component={ Ingredients } />
@@ -44,7 +38,7 @@ function App() {
         <Route path="/profile" component={ Profile } />
         <Route path="/done-recipes" component={ Done } />
         <Route path="/favorite-recipes" component={ Favorites } />
->>>>>>> cde645bd80c241ca15295a18c1bd153b270a2ae9
+
       </Switch>
     </RecipesProvider>
   );
