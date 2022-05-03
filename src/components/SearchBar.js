@@ -16,7 +16,7 @@ function SearchBar() {
   const [checkedRadio, setCheckedRadio] = useState('ingredient');
   const [inputSearch, setInputSearch] = useState('');
 
-  const { setFilter, setFilterDrinks } = useContext(RecipesContext);
+  const { setFilter, setFilterDrinks, setDetailsCond } = useContext(RecipesContext);
 
   const foodFetch = async () => {
     let response = [];
@@ -66,6 +66,7 @@ function SearchBar() {
       response = await drinkFetch();
       setFilterDrinks(response && response.drinks);
     }
+    setDetailsCond(true);
   };
 
   const checkedSetter = ({ target }) => target.checked && setCheckedRadio(target.value);
