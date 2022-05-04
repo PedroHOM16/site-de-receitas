@@ -31,7 +31,6 @@ function App() {
         <Route path="/profile" component={ Profile } />
         <Route path="/done-recipes" component={ Done } />
         <Route path="/favorite-recipes" component={ Favorites } />
-
       </Switch>
     </RecipesProvider>
   );
