@@ -19,29 +19,31 @@ function Drinks({ history }) {
       setFilterDrinks(data.drinks);
     };
     getDrink();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(filterDrinks);
   return (
     <div>
       <Header search title="Drinks" />
       <ButtonCategory pathname={ pathname } />
-      {
-        filterDrinks === null
-          ? global.alert('Sorry, we haven\'t found any recipes for these filters.')
-          : filterDrinks.map((el, index) => index < twelve
-          && (filterDrinks.length === 1 && detailsCond
-            ? <Redirect to={ `/drinks/${el.idDrink}` } />
-            : (
-              <div key={ index } data-testid={ `${index}-recipe-card` }>
-                <CardRecipes
-                  index={ index }
-                  image={ el.strDrinkThumb }
-                  name={ el.strDrink }
-                />
-              </div>)
-          ))
-      }
+      {filterDrinks === null
+        ? global.alert('Sorry, we haven\'t found any recipes for these filters.')
+        : filterDrinks.map(
+          (el, index) => index < twelve
+              && (filterDrinks.length === 1 && detailsCond ? (
+                <Redirect to={ `/drinks/${el.idDrink}` } />
+              ) : (
+                <div key={ index } data-testid={ `${index}-recipe-card` }>
+                  <CardRecipes
+                    index={ index }
+                    image={ el.strDrinkThumb }
+                    name={ el.strDrink }
+                    pathname={ pathname }
+                    id={ el.idDrink }
+                  />
+                </div>
+              )),
+        )}
       <Footer />
     </div>
   );
