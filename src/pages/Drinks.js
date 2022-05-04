@@ -21,9 +21,6 @@ function Drinks() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <h1> DRINKS </h1>
-=======
       <Header search title="Drinks" />
       {
         filterDrinks === null
@@ -40,7 +37,6 @@ function Drinks() {
               </div>)
           ))
       }
->>>>>>> 7381c3feeb9299c351795810c7a98a049f2bd02d
       <Footer />
     </div>
   );
