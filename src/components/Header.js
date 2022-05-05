@@ -35,6 +35,7 @@ function Header({ search, title }) {
           className="profile-top-btn"
           src={ profileIcon }
           onClick={ profilePage }
+          value
         />
         <h2 data-testid="page-title">{ title }</h2>
         { search ? <input
@@ -43,6 +44,7 @@ function Header({ search, title }) {
           className="search-top-btn"
           src={ searchIcon }
           onClick={ searchBar }
+          value
         /> : null}
       </header>
       {searchI && <SearchBar />}
