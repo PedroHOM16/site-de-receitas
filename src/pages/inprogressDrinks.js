@@ -47,6 +47,7 @@ function InprogressDrinks({ history }) {
       id: { id },
       name: { strDrink },
       category: { categoryEnd },
+      pathname: { pathname },
     };
     setIngredientsInprogress(objIngMes);
     setObjDatasInprogress(objParam);
