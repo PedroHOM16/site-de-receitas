@@ -3,10 +3,8 @@ export const getMealByIngridients = async (ingredient) => {
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   );
   const data = await response.json();
-  // console.log(data);
   return data;
 };
-// getMealByIngridients('Oil');
 
 export const getMealByName = async (name) => {
   const response = await fetch(
@@ -44,10 +42,24 @@ export const getListCategory = async (apiName, category) => {
   }
 };
 
-// export const fecthAllCategory = async () => {
-//   try {
-//     const response = await fetch();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+export const fetchRandomIgr = async (apiName) => {
+  const response = await fetch(`https://www.${apiName}.com/api/json/v1/1/random.php`);
+  const data = await response.json();
+  return data;
+};
+
+export const fetchListNationalities = async () => {
+  try {
+    const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchRecipesByNationality = async (nationality) => {
+  const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${nationality}`);
+  const data = await response.json();
+  return data;
+};

@@ -11,6 +11,7 @@ function RecipesProvider({ children }) {
   const [filter, setFilter] = useState([]);
   const [filterDrinks, setFilterDrinks] = useState([]);
   const [detailsCond, setDetailsCond] = useState(true);
+  const [defaulIgr, setDefaultIgr] = useState([]);
 
   const contextValue = {
     email,
@@ -29,6 +30,8 @@ function RecipesProvider({ children }) {
     setFilterDrinks,
     detailsCond,
     setDetailsCond,
+    defaulIgr,
+    setDefaultIgr,
   };
 
   return (

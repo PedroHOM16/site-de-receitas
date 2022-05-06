@@ -21,7 +21,6 @@ function Foods({ history }) {
     getFood();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(filter);
   return (
     <div>
       <Header search title="Foods" />
