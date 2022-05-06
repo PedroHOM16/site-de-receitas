@@ -4,6 +4,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipesProvider from './context/RecipesProvider';
 import Login from './pages/Login';
+import Explore from './pages/Explore';
+import Drinks from './pages/Drinks';
+import Inprogress from './pages/Inprogress';
+import Ingredients from './pages/Ingredients';
+import Profile from './pages/Profile';
+import Done from './pages/Done';
+import Favorites from './pages/Favorites';
 import Foods from './pages/Foods';
 import FoodDetails from './pages/FoodDetails';
 import DrinkDetails from './pages/DrinkDetails';
@@ -35,5 +42,4 @@ function App() {
     </RecipesProvider>
   );
 }
-
 export default App;
