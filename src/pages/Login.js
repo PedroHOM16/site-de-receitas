@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
 
 const paramEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+$/i;
@@ -11,26 +11,23 @@ function Login(props) {
     setEmail,
     passwordInput,
     setPasswordInput,
-    mealsToken,
     setMealsToken,
-    cocktailsToken,
     setCocktailsToken,
   } = useContext(RecipesContext);
 
   const submitBtn = () => {
     const { history } = props;
-    if (mealsToken === 1 && cocktailsToken === 1) history.push('/foods');
+    setMealsToken(1);
+    setCocktailsToken(1);
+    history.push('/foods');
   };
 
   const disableButton = () => passwordInput.length > six && paramEmail.test(email.email);
 
-  useEffect(() => {
-    setMealsToken(1);
-    setCocktailsToken(1);
-    localStorage.setItem('mealsToken', mealsToken);
-    localStorage.setItem('cocktailsToken', cocktailsToken);
-    localStorage.setItem('user', JSON.stringify(email));
-  }, [setMealsToken, setCocktailsToken, mealsToken, cocktailsToken, email]);
+  // useEffect(() => {
+  //   // setMealsToken(1);
+  //   // setCocktailsToken(1);
+  // }, [setMealsToken, setCocktailsToken, mealsToken, cocktailsToken, email]);
 
   const handleEmail = ({ target: { value } }) => {
     setEmail({ email: value });

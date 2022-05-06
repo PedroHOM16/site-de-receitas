@@ -9,7 +9,10 @@ import { getMealByName } from '../services/ApiMeals';
 import ButtonCategory from '../components/ButtonCategory';
 
 function Foods({ history }) {
-  const { filter, setFilter, detailsCond } = useContext(RecipesContext);
+  const {
+    email,
+    mealsToken,
+    cocktailsToken, filter, setFilter, detailsCond } = useContext(RecipesContext);
   const twelve = 12;
   const { pathname } = history.location;
 
@@ -21,6 +24,14 @@ function Foods({ history }) {
     getFood();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('mealsToken', mealsToken);
+    localStorage.setItem('cocktailsToken', cocktailsToken);
+    localStorage.setItem('user', JSON.stringify(email));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
       <Header search title="Foods" />
