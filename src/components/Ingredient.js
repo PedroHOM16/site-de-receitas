@@ -5,6 +5,7 @@ function Ingredient(obj) {
   const { ingredientsInprogress, ing, index, objDatasInprogress } = obj;
   const { ingredientsArray, measureArray } = ingredientsInprogress;
   const { pathname, id } = objDatasInprogress;
+
   const [isChecked, setIsChecked] = useState(false);
   const [isClassName, setIsClassName] = useState('checkedNotMarked');
 
@@ -59,6 +60,7 @@ function Ingredient(obj) {
     handleChecked();
     setIsChecked(checked);
     handleLocal();
+
     console.log(checked);
   };
 
