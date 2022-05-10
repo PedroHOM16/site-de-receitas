@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import CardRecipesInprogress from '../components/CardRecipesInprogress';
 import { getDetailsRecipes } from '../services/ApiMeals';
-import { getDrinksByName } from '../services/ApiDrinks';
-import CardDetailsRecipes from '../components/CardDetailsRecipes';
 
 const seven = 7;
+const twelve = 12;
 
-function FoodDetails({ history }) {
-  const [details, setDetails] = useState({});
-  const [ingredients, setIngredients] = useState({});
-  const [objDatas, setObjDatas] = useState({});
-  const [recomendation, setRecomendation] = useState([]);
-
+function InprogressFoods({ history }) {
+  const [detailsInprogress, setDetailsInprogress] = useState({});
+  const [ingredientsInprogress, setIngredientsInprogress] = useState({});
+  const [objDatasInprogress, setObjDatasInprogress] = useState({});
   const { pathname } = history.location;
-  const id = pathname.substring(seven);
+  const id = pathname.substring(seven, twelve);
 
-  const apiDetails = async () => {
-    const data = await getDetailsRecipes('themealdb', id);
-    setDetails(data.meals[0]);
-  };
-
-  const desconstructingFunc = () => {
+  const desconstructingFunc = (param) => {
     const { strMealThumb, strMeal, strCategory, strIngredient1, strIngredient2,
       strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7,
       strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12,
@@ -29,7 +22,7 @@ function FoodDetails({ history }) {
       strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6,
       strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12,
       strMeasure13, strMeasure14, strMeasure15, strMeasure16, strMeasure17, strMeasure18,
-      strMeasure19, strMeasure20, strArea } = details;
+      strMeasure19, strMeasure20 } = param;
 
     const objIngMes = {
       ingredientsArray: [strIngredient1, strIngredient2,
@@ -42,55 +35,46 @@ function FoodDetails({ history }) {
         strMeasure12, strMeasure13, strMeasure14, strMeasure15, strMeasure16,
         strMeasure17, strMeasure18, strMeasure19, strMeasure20],
     };
-
     const categoryEnd = strCategory;
 
     const objParam = {
-      instructions: strInstructions,
-      video: strYoutube,
-      image: strMealThumb,
-      id,
-      name: strMeal,
-      categoryX: categoryEnd,
-      nationality: strArea,
-      category: strCategory,
-      type: 'food',
-      alcoholicOrNot: '',
+      instructions: { strInstructions },
+      video: { strYoutube },
+      image: { strMealThumb },
+      id: { id },
+      name: { strMeal },
+      category: { categoryEnd },
+      pathname: { pathname },
     };
-    setIngredients(objIngMes);
-    setObjDatas(objParam);
+    setIngredientsInprogress(objIngMes);
+    setObjDatasInprogress(objParam);
   };
 
-  const getRecomendation = async () => {
-    const data = await getDrinksByName('');
-    setRecomendation(data.drinks);
+  const apiDetails = async () => {
+    const data = await getDetailsRecipes('themealdb', id);
+    setDetailsInprogress(data.meals[0]);
+    console.log(data);
+    desconstructingFunc(data.meals[0]);
   };
 
   useEffect(() => {
     apiDetails();
-    getRecomendation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    desconstructingFunc();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [details]);
-
+  console.log('details: ', detailsInprogress);
   return (
     <div>
       <h1>Cheguei aqui! Bora</h1>
-      <CardDetailsRecipes
-        objDatas={ objDatas }
-        ingredients={ ingredients }
-        pathname={ pathname }
-        recomendation={ recomendation }
+      <CardRecipesInprogress
+        objDatasInprogress={ objDatasInprogress }
+        ingredientsInprogress={ ingredientsInprogress }
       />
     </div>
   );
 }
 
-FoodDetails.propTypes = {
+InprogressFoods.propTypes = {
   history: PropTypes.shape({
     location: PropTypes.shape({
       pathname: PropTypes.string,
@@ -98,4 +82,4 @@ FoodDetails.propTypes = {
   }),
 }.isRequired;
 
-export default FoodDetails;
+export default InprogressFoods;
