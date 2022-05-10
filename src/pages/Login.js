@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
+import './Login.css';
 
 const paramEmail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+$/i;
 const six = 6;
@@ -11,26 +12,23 @@ function Login(props) {
     setEmail,
     passwordInput,
     setPasswordInput,
-    mealsToken,
     setMealsToken,
-    cocktailsToken,
     setCocktailsToken,
   } = useContext(RecipesContext);
 
   const submitBtn = () => {
     const { history } = props;
-    if (mealsToken === 1 && cocktailsToken === 1) history.push('/foods');
+    setMealsToken(1);
+    setCocktailsToken(1);
+    history.push('/foods');
   };
 
   const disableButton = () => passwordInput.length > six && paramEmail.test(email.email);
 
-  useEffect(() => {
-    setMealsToken(1);
-    setCocktailsToken(1);
-    localStorage.setItem('mealsToken', mealsToken);
-    localStorage.setItem('cocktailsToken', cocktailsToken);
-    localStorage.setItem('user', JSON.stringify(email));
-  }, [setMealsToken, setCocktailsToken, mealsToken, cocktailsToken, email]);
+  // useEffect(() => {
+  //   // setMealsToken(1);
+  //   // setCocktailsToken(1);
+  // }, [setMealsToken, setCocktailsToken, mealsToken, cocktailsToken, email]);
 
   const handleEmail = ({ target: { value } }) => {
     setEmail({ email: value });
@@ -41,16 +39,18 @@ function Login(props) {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form>
+    <div className="Login-container">
+      <h1 className="title-login">Login</h1>
+      <form className="form-login">
         <input
+          className="input-login"
           type="text"
           placeholder="Digite seu e-mail"
           data-testid="email-input"
           onChange={ handleEmail }
         />
         <input
+          className="input-login"
           type="password"
           placeholder="Digite sua senha"
           data-testid="password-input"
@@ -58,6 +58,7 @@ function Login(props) {
           onChange={ handlePassword }
         />
         <button
+          className="button-login"
           disabled={ !disableButton() }
           type="button"
           data-testid="login-submit-btn"

@@ -21,7 +21,7 @@ function Drinks({ history }) {
     getDrink();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(filterDrinks);
+
   return (
     <div>
       <Header search title="Drinks" />

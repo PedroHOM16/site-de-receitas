@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-// import RecipesContext from '../context/RecipesContext';
 
 function CardRecipes({ index, name, image, pathname, id }) {
   const history = useHistory();
   const handleClickRecipes = () => {
-    if (pathname === '/foods') {
-      console.log(id);
+    if (pathname === '/foods' || pathname === '/explore/foods/nationalities') {
       return history.push(`/foods/${id}`);
     }
     if (pathname === '/drinks') {

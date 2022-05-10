@@ -27,8 +27,8 @@ function Header({ search, title }) {
   };
 
   return (
-    <div>
-      <header>
+    <div className="header-container">
+      <header className="header">
         <input
           type="button"
           data-testid="profile-top-btn"
