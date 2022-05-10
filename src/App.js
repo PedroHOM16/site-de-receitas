@@ -46,5 +46,4 @@ function App() {
     </RecipesProvider>
   );
 }
-
 export default App;
