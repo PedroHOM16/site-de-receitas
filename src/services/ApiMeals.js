@@ -1,5 +1,4 @@
 export const getMealByIngridients = async (ingredient) => {
-
   const response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`,
   );
@@ -7,16 +6,6 @@ export const getMealByIngridients = async (ingredient) => {
   return data;
 
   try {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`,
-    );
-    const data = await response.json();
-    // console.log(data);
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 export const getMealByName = async (name) => {
   try {
@@ -99,4 +88,3 @@ export const getDetailsRecipes = async (apiName, id) => {
     console.log(err);
   }
 };
-
