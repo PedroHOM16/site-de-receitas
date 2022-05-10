@@ -36,9 +36,9 @@ function InprogressDrinks({ history }) {
         strMeasure17, strMeasure18, strMeasure19, strMeasure20],
     };
 
-    console.log(objIngMes);
-
     const categoryEnd = `${strCategory}: ${strAlcoholic}`;
+
+    console.log(detailsInprogress);
 
     const objParam = {
       instructions: { strInstructions },
@@ -55,9 +55,7 @@ function InprogressDrinks({ history }) {
 
   const apiDetails = async () => {
     const data = await getDetailsRecipes('thecocktaildb', id);
-    console.log(data);
     setDetailsInprogress(data.drinks[0]);
-    console.log(id);
     desconstructingFunc(data.drinks[0]);
   };
 
@@ -66,10 +64,9 @@ function InprogressDrinks({ history }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('details: ', detailsInprogress);
   return (
     <div>
-      <h1>Cheguei aqui! Bora Drinks</h1>
+      <h1>Drinks in progress</h1>
       <CardRecipesInprogress
         objDatasInprogress={ objDatasInprogress }
         ingredientsInprogress={ ingredientsInprogress }

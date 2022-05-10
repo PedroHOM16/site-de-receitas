@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import CardDone from '../components/CardDone';
 
-// SavedList
-
 const favoriteRecipes = [
   {
     id: '52771',
@@ -24,10 +22,6 @@ const favoriteRecipes = [
     image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
   },
 ];
-// const handleShareClick = () => {
-//   const endPoint = window.location.href;
-//   navigator.clipboard.writeText(endPoint);
-// };
 
 const copy = require('clipboard-copy');
 
@@ -71,11 +65,7 @@ function Favoites() {
   }
 
   function desfavoritar(elemento) {
-    // const teste500 = JSON.stringify(elemento);
-    // console.log(teste500);
     console.log(elemento);
-    // console.log(localStorage.getItem('favoriteRecipes'));
-    // localStorage.removeItem(favoriteRecipes[0]);
   }
 
   function Listar(palavra) {

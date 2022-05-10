@@ -17,11 +17,6 @@ function Ingredient(obj) {
   };
 
   const handleClickChecked = (checked) => {
-    // if (checked === false) {
-    //   setIsChecked(true);
-    // } else {
-    //   setIsChecked(false);
-    // }
     handleChecked();
     setIsChecked(checked);
     console.log(checked);

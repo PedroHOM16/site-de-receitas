@@ -25,11 +25,6 @@ function Login(props) {
 
   const disableButton = () => passwordInput.length > six && paramEmail.test(email.email);
 
-  // useEffect(() => {
-  //   // setMealsToken(1);
-  //   // setCocktailsToken(1);
-  // }, [setMealsToken, setCocktailsToken, mealsToken, cocktailsToken, email]);
-
   const handleEmail = ({ target: { value } }) => {
     setEmail({ email: value });
   };

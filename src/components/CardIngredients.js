@@ -11,7 +11,6 @@ function CardIngredients({ index, image, name, pathname }) {
 
   const getFoodIgr = async () => {
     const data = await getMealByIngridients(name);
-    console.log(data.meals);
     setFilter(data.meals);
   };
 
