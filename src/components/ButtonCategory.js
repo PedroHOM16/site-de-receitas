@@ -47,7 +47,7 @@ function ButtonCategory({ pathname }) {
     }
   };
 
-  const handleClick = (value, index) => {
+  const handleClick = (index) => {
     if (category[index].strCategory !== selectedFilter) {
       setIsToggle(false);
     } else {
@@ -85,7 +85,7 @@ function ButtonCategory({ pathname }) {
               data-testid={ `${el.strCategory}-category-filter` }
               type="button"
               value={ el.strCategory }
-              onClick={ ({ target: { value } }) => handleClick(value, index) }
+              onClick={ () => handleClick(index) }
             >
               {el.strCategory}
             </button>
