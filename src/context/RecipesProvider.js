@@ -16,7 +16,6 @@ function RecipesProvider({ children }) {
   const [saveBool, setSaveBool] = useState(true);
   const [savedList, setSavedList] = useState({});
 
-
   const contextValue = {
     email,
     setEmail,
