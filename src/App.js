@@ -10,6 +10,13 @@ import DrinkDetails from './pages/DrinkDetails';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
 import ExploreNationalities from './pages/ExploreNationalities';
+import Inprogress from './pages/Inprogress';
+import Drinks from './pages/Drinks';
+import Ingredients from './pages/Ingredients';
+import Explore from './pages/Explore';
+import Profile from './pages/Profile';
+import Done from './pages/Done';
+import Favorites from './pages/Favorites';
 
 function App() {
   return (
