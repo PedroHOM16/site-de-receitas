@@ -22,7 +22,6 @@ function ExploreNationalities({ history }) {
 
   const getFood = async () => {
     const data = await getMealByName('');
-    console.log(data);
     setRecipes(data.meals);
   };
 
@@ -36,7 +35,6 @@ function ExploreNationalities({ history }) {
     } else {
       const getByNationality = async () => {
         const filterData = await fetchRecipesByNationality(value);
-        console.log(filterData.meals);
         setFilterRecipe(filterData.meals);
       };
       getByNationality();
