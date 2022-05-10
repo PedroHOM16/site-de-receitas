@@ -4,7 +4,6 @@ import RecipesContext from '../context/RecipesContext';
 import StartRecipeBtn from './StartRecipeBtn';
 import ShareBtn from './ShareBtn';
 import FavoriteBtn from './FavoriteBtn';
-// import CardRecipes from './CardRecipes';
 
 const six = 6;
 function CardDetailsRecipes(obj) {
@@ -17,7 +16,6 @@ function CardDetailsRecipes(obj) {
     categoryX, nationality, type, alcoholicOrNot, category, video } = objDatas;
 
   useEffect(() => {
-    console.log('passo 1');
     setSavedList({
       id,
       name,

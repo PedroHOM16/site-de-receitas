@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import CardDone from '../components/CardDone';
 
-// SavedList
-
 const data = '23/06/2020';
 
 const doneRecipes = [
@@ -30,11 +28,6 @@ const doneRecipes = [
     tags: [],
   },
 ];
-
-// const handleShareClick = () => {
-//   const endPoint = window.location.href;
-//   navigator.clipboard.writeText(endPoint);
-// };
 
 const copy = require('clipboard-copy');
 
