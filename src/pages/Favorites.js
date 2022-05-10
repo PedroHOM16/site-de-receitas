@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import CardDone from '../components/CardDone';
 
-// SavedList
-
 const favoriteRecipes = [
   {
     id: '52771',
@@ -24,40 +22,30 @@ const favoriteRecipes = [
     image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
   },
 ];
-// const handleShareClick = () => {
-//   const endPoint = window.location.href;
-//   navigator.clipboard.writeText(endPoint);
-// };
 
 const copy = require('clipboard-copy');
 
 function Favoites() {
-  const [favoriteRecipes2, setFavoriteRecipes] = useState([
-    {
-      id: '52771',
-      type: 'food',
-      nationality: 'Italian',
-      category: 'Vegetarian',
-      alcoholicOrNot: '',
-      name: 'Spicy Arrabiata Penne',
-      image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-    },
-    {
-      id: '178319',
-      type: 'drink',
-      nationality: '',
-      category: 'Cocktail',
-      alcoholicOrNot: 'Alcoholic',
-      name: 'Aquamarine',
-      image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-    },
-  ]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [resultsArray, setResultsArray] = useState(
+    JSON.parse(localStorage.getItem('favoriteRecipes')),
+  );
 
   const [teste, setTeste] = useState(false);
   const [teste2, setTeste2] = useState(false);
   useEffect(() => {
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
-  });
+    const teste5000 = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    setFavoriteRecipes(teste5000);
+  }, []);
+
+  useEffect(() => {
+    if (filter.length > 0) {
+      setResultsArray(filter);
+    } else {
+      setResultsArray(favoriteRecipes);
+    }
+  }, [filter, favoriteRecipes, resultsArray]);
 
   function funcCompartilhar(elemento) {
     const endPoint = `http://localhost:3000/foods/${elemento.id}`;
@@ -71,31 +59,30 @@ function Favoites() {
   }
 
   function desfavoritar(elemento) {
-    // const teste500 = JSON.stringify(elemento);
-    // console.log(teste500);
-    console.log(elemento);
-    // console.log(localStorage.getItem('favoriteRecipes'));
-    // localStorage.removeItem(favoriteRecipes[0]);
+    const finalResult = favoriteRecipes.filter((each) => each.id !== elemento.id);
+    setFavoriteRecipes(finalResult);
   }
+
+  useEffect(() => {
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
+  }, [favoriteRecipes]);
 
   function Listar(palavra) {
     if (palavra === 'food') {
       const teste50 = favoriteRecipes.filter((elemento) => (
         elemento.type === 'food' ? elemento : ''
       ));
-      setFavoriteRecipes(teste50);
+      setFilter(teste50);
     } else
     if (palavra === 'drink') {
       const teste50 = favoriteRecipes.filter((elemento) => (
         elemento.type === 'drink' ? elemento : ''
       ));
-      setFavoriteRecipes(teste50);
+      setFilter(teste50);
     } else {
-      const teste50 = favoriteRecipes;
-      setFavoriteRecipes(teste50);
+      setFilter(favoriteRecipes);
     }
   }
-
   return (
     <div>
       <Header title="Favorite Recipes" />
@@ -131,7 +118,7 @@ function Favoites() {
         </button>
       </div>
 
-      {favoriteRecipes2.map((elemento, index) => (
+      {resultsArray.map((elemento, index) => (
         <div key={ index }>
           <CardDone
             index={ index }

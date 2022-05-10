@@ -79,7 +79,7 @@ function DrinkDetails({ history }) {
 
   return (
     <div>
-      <h1>Cheguei aqui! Bora</h1>
+      <h1>Drinks Details</h1>
       <CardDetailsRecipes
         objDatas={ objDatas }
         ingredients={ ingredients }

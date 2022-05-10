@@ -6,7 +6,6 @@ import RecipesContext from '../context/RecipesContext';
 function StartRecipeBtn({ savedList: id }) {
   const { setSaveBool } = useContext(RecipesContext);
   const history = useHistory();
-  // const { id, type } = savedList;
 
   const handleSaveClick = () => {
     setSaveBool(false);

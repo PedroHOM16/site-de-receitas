@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-// import RecipesContext from '../context/RecipesContext';
 
 function CardDone({ index, name, image, id, type }) {
   const history = useHistory();

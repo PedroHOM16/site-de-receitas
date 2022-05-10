@@ -53,5 +53,3 @@ function CardRecipesInprogress(obj) {
 }
 
 export default CardRecipesInprogress;
-/// /
-// ingredientsArray.map((ing) => <Ingredient ing={ ing } />);

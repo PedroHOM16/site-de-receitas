@@ -66,7 +66,7 @@ function InprogressFoods({ history }) {
   console.log('details: ', detailsInprogress);
   return (
     <div>
-      <h1>Cheguei aqui! Bora</h1>
+      <h1>Food in progress</h1>
       <CardRecipesInprogress
         objDatasInprogress={ objDatasInprogress }
         ingredientsInprogress={ ingredientsInprogress }

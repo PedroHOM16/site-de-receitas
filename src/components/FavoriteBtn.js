@@ -8,7 +8,6 @@ function FavoriteBtn(data) {
   const [srcIcon, setSrcIcon] = useState(whiteHeartIcon);
 
   const { favorites, setFavorites, savedList } = useContext(RecipesContext);
-  // const { data } = data;
 
   useEffect(() => {
     const getting = localStorage.getItem('favoriteRecipes');
@@ -23,10 +22,7 @@ function FavoriteBtn(data) {
   }, []);
 
   useEffect(() => {
-    console.log('passo 2');
-    console.log('favorites: ', favorites);
     const currentRecipe = favorites.find((each) => each.id === Object.values(data)[0]);
-    console.log('1currentrecipe: ', Object.values(data)[0]);
     if (!currentRecipe) {
       setFavBool(true);
     } else {
@@ -64,7 +60,6 @@ function FavoriteBtn(data) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [favBool]);
 
-  console.log(favBool);
   return (
     <input
       data-testid="favorite-btn"
