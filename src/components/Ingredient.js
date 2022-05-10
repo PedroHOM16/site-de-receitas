@@ -30,11 +30,15 @@ function Ingredient(obj) {
       meals: {},
     };
     console.log(pathname);
-    if (pathname.pathname === `/foods/${id.id}/in-progress` && isChecked === true) {
+    if (pathname.pathname === `/foods/${id.id}/in-progress`) {
       inProgressRecipes.meals = { [id.id]:
        [ingredientsArray[index]] };
       const localTest = localStorage.getItem('inProgressRecipes');
-      handleIf(localTest, inProgressRecipes);
+
+      if (!localTest) {
+        localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+      }
+
       const resultado = JSON.parse(localTest);
       inProgressRecipes.meals = { ...resultado.meals,
         [id.id]: [
