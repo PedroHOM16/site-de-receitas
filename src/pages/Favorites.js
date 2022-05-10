@@ -70,7 +70,15 @@ function Favoites() {
     }
   }
 
-  function Chulambes(palavra) {
+  function desfavoritar(elemento) {
+    // const teste500 = JSON.stringify(elemento);
+    // console.log(teste500);
+    console.log(elemento);
+    // console.log(localStorage.getItem('favoriteRecipes'));
+    // localStorage.removeItem(favoriteRecipes[0]);
+  }
+
+  function Listar(palavra) {
     if (palavra === 'food') {
       const teste50 = favoriteRecipes.filter((elemento) => (
         elemento.type === 'food' ? elemento : ''
@@ -87,6 +95,7 @@ function Favoites() {
       setFavoriteRecipes(teste50);
     }
   }
+
   return (
     <div>
       <Header title="Favorite Recipes" />
@@ -94,7 +103,7 @@ function Favoites() {
         <button
           data-testid="filter-by-all-btn"
           type="button"
-          onClick={ () => Chulambes('all') }
+          onClick={ () => Listar('all') }
         >
           {' '}
           All
@@ -104,7 +113,7 @@ function Favoites() {
         <button
           data-testid="filter-by-food-btn"
           type="button"
-          onClick={ () => Chulambes('food') }
+          onClick={ () => Listar('food') }
         >
           {' '}
           Food
@@ -113,7 +122,7 @@ function Favoites() {
         <button
           data-testid="filter-by-drink-btn"
           type="button"
-          onClick={ () => Chulambes('drink') }
+          onClick={ () => Listar('drink') }
         >
           {' '}
           Drinks
@@ -145,6 +154,7 @@ function Favoites() {
             type="button"
             data-testid={ `${index}-horizontal-favorite-btn` }
             src="src/images/blackHeartIcon.svg"
+            onClick={ () => ((desfavoritar(elemento))) }
           >
             {' '}
             Desfavoritar
