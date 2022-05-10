@@ -15,7 +15,6 @@ function ExploreFoods() {
   const getIgrRandom = async () => {
     const data = await fetchRandomIgr('themealdb');
     const randomId = data.meals.map(({ idMeal }) => idMeal);
-    console.log(data);
     setRandom(randomId[0]);
   };
 

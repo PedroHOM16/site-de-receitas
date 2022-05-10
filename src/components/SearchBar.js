@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import './Header.css';
 import {
   getMealByFirstLetter,
   getMealByIngridients,
@@ -73,14 +74,16 @@ function SearchBar() {
 
   const handleInput = ({ target: { value } }) => setInputSearch(value);
   return (
-    <form>
+    <form className="search-bar">
       <input
+        className="input-search"
         type="text"
         data-testid="search-input"
         placeholder="Search Recipe"
         onChange={ handleInput }
       />
       <input
+        className="ingredient-search-radio"
         type="radio"
         id="ingredient-search-radio"
         data-testid="ingredient-search-radio"
@@ -90,6 +93,7 @@ function SearchBar() {
       />
       Ingredient
       <input
+        className="name-search-radio"
         type="radio"
         data-testid="name-search-radio"
         value="name"
@@ -99,6 +103,7 @@ function SearchBar() {
       />
       Name
       <input
+        className="first-letter-search-radio"
         type="radio"
         data-testid="first-letter-search-radio"
         value="first-letter"
@@ -108,11 +113,12 @@ function SearchBar() {
       />
       First letter
       <button
+        className="search-btn"
         type="button"
         data-testid="exec-search-btn"
         onClick={ searchingFunc }
       >
-        Pesquisar
+        Search
       </button>
     </form>
   );

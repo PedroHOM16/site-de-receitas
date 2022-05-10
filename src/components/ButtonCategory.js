@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext } from 'react';
+import './Header.css';
 import {
   getCategory,
   getListCategory,
@@ -68,8 +69,9 @@ function ButtonCategory({ pathname }) {
   }, []);
 
   return (
-    <div>
+    <div className="category-filter-buttons">
       <button
+        className="each-button-category"
         type="button"
         data-testid="All-category-filter"
         onClick={ () => setIsToggle(true) }
@@ -80,6 +82,7 @@ function ButtonCategory({ pathname }) {
         (el, index) => index < five && (
           <div key={ index }>
             <button
+              className="each-button-category"
               data-testid={ `${el.strCategory}-category-filter` }
               type="button"
               value={ el.strCategory }
