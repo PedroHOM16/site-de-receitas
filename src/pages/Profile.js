@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
+import './Profile.css';
 
 function Profile() {
   const { setEmail, setPasswordInput } = useContext(RecipesContext);
@@ -28,10 +29,17 @@ function Profile() {
   return (
     <div>
       <Header title="Profile" />
-      <div>
-        <span data-testid="profile-email">{emailUser?.email}</span>
-        <div>
+      <div className="profile-container">
+        <span
+          className="profile-email"
+          data-testid="profile-email"
+        >
+          {`Email: ${emailUser?.email}`}
+
+        </span>
+        <div className="profile-container">
           <button
+            className="profile-done-btn"
             data-testid="profile-done-btn"
             type="button"
             onClick={ () => handleClick(DoneRecipes) }
@@ -40,6 +48,7 @@ function Profile() {
 
           </button>
           <button
+            className="profile-favorite-btn"
             data-testid="profile-favorite-btn"
             type="button"
             onClick={ () => handleClick(FavoriteRecipes) }
@@ -48,6 +57,7 @@ function Profile() {
 
           </button>
           <button
+            className="profile-logout-btn"
             data-testid="profile-logout-btn"
             type="button"
             onClick={ () => handleClick(Logout) }
