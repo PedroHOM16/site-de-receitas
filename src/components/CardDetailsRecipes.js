@@ -29,7 +29,7 @@ function CardDetailsRecipes(obj) {
   }, [objDatas]);
 
   return (
-    <div>
+    <div className="bodyFake">
       <img
         data-testid="recipe-photo"
         src={ image }
@@ -48,13 +48,14 @@ function CardDetailsRecipes(obj) {
                 <li
                   data-testid={ `${index}-ingredient-name-and-measure` }
                   key={ index }
+                  className="ingredients"
                 >
                   {measureArray[index] ? `${ing}: ${measureArray[index]}` : ing}
                 </li>
               )))
         }
       </ul>
-      <p data-testid="instructions">{ instructions }</p>
+      <p data-testid="instructions" className="instructions">{ instructions }</p>
       <br />
       <div data-testid="video">{ video }</div>
       <div className="recomendation">

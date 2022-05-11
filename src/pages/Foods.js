@@ -7,6 +7,7 @@ import CardRecipes from '../components/CardRecipes';
 import RecipesContext from '../context/RecipesContext';
 import { getMealByName } from '../services/ApiMeals';
 import ButtonCategory from '../components/ButtonCategory';
+import './foods.css';
 
 function Foods({ history }) {
   const {
@@ -43,7 +44,10 @@ function Foods({ history }) {
               && (filter.length === 1 && detailsCond ? (
                 <Redirect to={ `/foods/${el.idMeal}` } />
               ) : (
-                <div key={ index } data-testid={ `${index}-recipe-card` }>
+                <div
+                  key={ index }
+                  data-testid={ `${index}-recipe-card` }
+                >
                   <CardRecipes
                     index={ index }
                     image={ el.strMealThumb }
