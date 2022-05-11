@@ -7,7 +7,7 @@
   display: flex;
   flex-flow: row nowrap;
   height: 60px;
-  justify-content: space-between;
+  justify-content: space-around;
   top: 0;
   width: 354px;
 }
