@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { fetchRandomIgr } from '../services/ApiMeals';
+import './Explore.css';
 
 function ExploreFoods() {
   const history = useHistory();
@@ -31,9 +32,10 @@ function ExploreFoods() {
   return (
     <div>
       <Header title="Explore Foods" />
-      <div>
+      <div className="explore-foods-container">
 
         <button
+          className="explore-by-ingredient"
           data-testid="explore-by-ingredient"
           type="button"
           onClick={ () => handleClick(byIngredient) }
@@ -42,6 +44,7 @@ function ExploreFoods() {
 
         </button>
         <button
+          className="explore-by-nationality"
           data-testid="explore-by-nationality"
           type="button"
           onClick={ () => handleClick(byNationality) }
@@ -50,6 +53,7 @@ function ExploreFoods() {
 
         </button>
         <button
+          className="explore-surprise"
           data-testid="explore-surprise"
           type="button"
           onClick={ () => handleClick(surpriseMe) }
