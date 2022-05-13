@@ -9,7 +9,9 @@ function CardRecipesInprogress(obj) {
   const { instructions, image, name, category } = objDatasInprogress;
   console.log(name && name.strMeal);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+
+  }, []);
 
   return (
     <div>
@@ -36,6 +38,7 @@ function CardRecipesInprogress(obj) {
               index={ index }
               key={ index }
               ingredientsInprogress={ ingredientsInprogress }
+              objDatasInprogress={ objDatasInprogress }
             />,
           )}
       </ul>

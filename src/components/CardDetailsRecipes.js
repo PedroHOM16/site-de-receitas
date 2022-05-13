@@ -29,17 +29,19 @@ function CardDetailsRecipes(obj) {
   }, [objDatas]);
 
   return (
-    <div>
-      <img
-        data-testid="recipe-photo"
-        src={ image }
-        alt={ name }
-      />
-      <h2 data-testid="recipe-title">{ name }</h2>
+    <div className="bodyFake">
+      <div className="imgs">
+        <img
+          data-testid="recipe-photo"
+          src={ image }
+          alt={ name }
+        />
+        <h2 data-testid="recipe-title">{ name }</h2>
+      </div>
       <ShareBtn />
       <FavoriteBtn data={ id } />
       <p data-testid="recipe-category">{ categoryX }</p>
-      <ul>
+      <ul className="ingredients">
         {
           ingredientsArray
             && ingredientsArray.map((ing, index) => (
@@ -48,18 +50,20 @@ function CardDetailsRecipes(obj) {
                 <li
                   data-testid={ `${index}-ingredient-name-and-measure` }
                   key={ index }
+                  className="ingredients-li"
                 >
                   {measureArray[index] ? `${ing}: ${measureArray[index]}` : ing}
                 </li>
               )))
         }
       </ul>
-      <p data-testid="instructions">{ instructions }</p>
+      <p data-testid="instructions" className="instructions">{ instructions }</p>
       <br />
       <div data-testid="video">{ video }</div>
-      <div className="recomendation">
-        <div className="recomendation2">
-          {recomendation
+      <div className="bodyFake2">
+        <div className="recomendation">
+          <div className="recomendation2">
+            {recomendation
             && recomendation.map((each, i) => (
               i < six
               && (
@@ -75,6 +79,7 @@ function CardDetailsRecipes(obj) {
                   </p>
                 </div>)
             ))}
+          </div>
         </div>
       </div>
       {saveBool

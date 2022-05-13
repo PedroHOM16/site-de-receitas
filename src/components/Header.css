@@ -8,22 +8,27 @@
   flex-flow: row nowrap;
   height: 60px;
   justify-content: space-between;
-  left: 0;
   top: 0;
-  width: 360px;
+  width: 354px;
 }
 
 .profile-top-btn {
+  background: none;
   background-image: url('../images/profileIcon.svg');
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 15px;
 }
 
 .search-top-btn {
+  background: none;
   background-image: url('../images/searchIcon.svg');
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 15px;
 }
 
@@ -63,14 +68,17 @@
 .category-filter-buttons {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
   margin: 6%;
   padding: 0;
 }
 
 .each-button-category {
   background: #c4c4c4;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) , 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
+  font-size: 16px;
   margin-bottom: 2%;
-  width: 100px;
+  padding: 14px 15px;
 }

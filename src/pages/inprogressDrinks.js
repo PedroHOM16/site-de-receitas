@@ -4,14 +4,14 @@ import CardRecipesInprogress from '../components/CardRecipesInprogress';
 import { getDetailsRecipes } from '../services/ApiMeals';
 
 const seven = 8;
-const twelve = 14;
+const twelve = -12;
 
 function InprogressDrinks({ history }) {
   const [detailsInprogress, setDetailsInprogress] = useState({});
   const [ingredientsInprogress, setIngredientsInprogress] = useState({});
   const [objDatasInprogress, setObjDatasInprogress] = useState({});
   const { pathname } = history.location;
-  const id = pathname.substring(seven, twelve);
+  const id = pathname.slice(seven, twelve);
 
   const desconstructingFunc = (param) => {
     const { strDrinkThumb, strDrink, strCategory, strIngredient1, strIngredient2,
@@ -55,6 +55,8 @@ function InprogressDrinks({ history }) {
 
   const apiDetails = async () => {
     const data = await getDetailsRecipes('thecocktaildb', id);
+    console.log(data);
+    console.log(id);
     setDetailsInprogress(data.drinks[0]);
     desconstructingFunc(data.drinks[0]);
   };

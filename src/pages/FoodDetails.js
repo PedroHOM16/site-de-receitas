@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getDetailsRecipes } from '../services/ApiMeals';
 import { getDrinksByName } from '../services/ApiDrinks';
 import CardDetailsRecipes from '../components/CardDetailsRecipes';
+import '../components/CardDetailsRecipes.css';
 
 const seven = 7;
 
@@ -79,7 +80,7 @@ function FoodDetails({ history }) {
 
   return (
     <div>
-      <h1>Food Details</h1>
+      <h1 className="foods-details">Food Details</h1>
       <CardDetailsRecipes
         objDatas={ objDatas }
         ingredients={ ingredients }

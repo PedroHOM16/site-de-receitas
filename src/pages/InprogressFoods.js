@@ -54,6 +54,7 @@ function InprogressFoods({ history }) {
     const data = await getDetailsRecipes('themealdb', id);
     setDetailsInprogress(data.meals[0]);
     console.log(data);
+    console.log(id);
     desconstructingFunc(data.meals[0]);
   };
 

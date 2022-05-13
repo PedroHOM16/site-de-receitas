@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import './CardRecipes.css';
 
 function CardRecipes({ index, name, image, pathname, id }) {
   const history = useHistory();
@@ -13,8 +14,12 @@ function CardRecipes({ index, name, image, pathname, id }) {
     }
   };
   return (
-    <div>
-      <button type="button" onClick={ () => handleClickRecipes() }>
+    <div className="card-recipes-div">
+      <button
+        type="button"
+        onClick={ () => handleClickRecipes() }
+        className="card-recipes-btn"
+      >
         <img data-testid={ `${index}-card-img` } src={ image } alt="imagem" />
         <h3 data-testid={ `${index}-card-name` }>{name}</h3>
       </button>
